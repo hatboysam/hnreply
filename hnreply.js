@@ -1,6 +1,6 @@
 var postLoc = "http://news.ycombinator.com/r"
 
-$('a[href*="reply"]').click(function(e) {
+$('a[href^="reply?"]').click(function(e) {
 	e.preventDefault();
 	$(this).hide();
 	link = 'http://news.ycombinator.com/' + $(this).attr('href');
