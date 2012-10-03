@@ -18,10 +18,11 @@ $('.rbutton').live('click', function(e) {
 	e.preventDefault();
 	link = $(this).attr('data');
 	text = $(this).prev().val();
-	postCommentTo(link, text);
+	postCommentTo(link, text, $(this));
 });
 
-function postCommentTo(link, text) {
+function postCommentTo(link, text, button) {
+	disableButtonAndBox(button);
 	$.ajax({
 		accepts: "text/html",
 		url : link
@@ -29,7 +30,19 @@ function postCommentTo(link, text) {
 		input = $(html).find('input');
 		fnid = input.attr('value');
 		sendComment(fnid, text);
+	}).error(function(xhr, status, error) {
+		enableButtonAndBox(button);
 	});
+}
+
+function disableButtonAndBox(button) {
+	button.attr('disabled','disabled');
+	button.prev().attr('disabled', 'disabled');
+}
+
+function enableButtonAndBox(button) {
+	button.removeAttr('disabled');
+	button.prev().removeAttr('disabled');
 }
 
 function sendComment(fnidarg, textarg) {
