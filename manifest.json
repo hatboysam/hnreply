@@ -1,6 +1,6 @@
 {
 	"name" : "Hacker News Inline Reply",
-	"version" : "1.0.2",
+	"version" : "1.0.3",
 	"manifest_version" : 2,
 	"description" : "A plugin to make replying on Hacker news inline and easy",
 	"icons" : {
